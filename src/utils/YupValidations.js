@@ -10,3 +10,8 @@ export const YupLoginValidations = Yup.object({
     .min(8, "Password should have at least 6 characters.")
     .required("Field required"),
 });
+
+/** SEARCH */
+export const YupSearchValidations = Yup.object({
+  name: Yup.string().required("Field required"),
+});

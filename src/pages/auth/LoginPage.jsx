@@ -4,7 +4,6 @@ import { TextField } from "@mui/material";
 import { useFormik } from "formik";
 
 /** Custom hooks */
-// import { useAuthStore } from "../../hooks";
 import { useAuthStore } from "../../hooks";
 
 /** Layouts */
@@ -27,7 +26,7 @@ export const LoginPage = () => {
   const formik = useFormik({
     initialValues: {
       email: "ojedalucasgabriel2@gmail.com",
-      password: "Password123",
+      password: "Password123!",
     },
 
     validationSchema: YupLoginValidations,
