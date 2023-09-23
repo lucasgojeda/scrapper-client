@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import DownloadIcon from "@mui/icons-material/Download";
 import moment from "moment";
+import { useS3Client } from "../../hooks";
 
 const StyledCard = styled(Card)(({ theme }) => ({
   width: "50%",
@@ -45,11 +46,9 @@ const DownloadIconContainer = styled("div")(() => ({
   justifyContent: "space-between",
 }));
 
-const A = styled("a")(() => ({
-  textDecoration: "none",
-}));
+export const CardReport = ({ id, name, date, productsQuantity }) => {
+  const { getS3Link } = useS3Client();
 
-export const CardReport = ({ name, date, url, productsQuantity }) => {
   return (
     <StyledCard>
       <CardContent
@@ -90,11 +89,13 @@ export const CardReport = ({ name, date, url, productsQuantity }) => {
           >
             {moment(date).format("MMM DD YYYY - HH:mm")}
           </Typography>
-          <A href={url}>
-            <IconButton color="primary" aria-label="Download" component="a">
-              <DownloadIcon />
-            </IconButton>
-          </A>
+          <IconButton
+            color="primary"
+            aria-label="Download"
+            onClick={() => getS3Link(id, name)}
+          >
+            <DownloadIcon />
+          </IconButton>
         </DownloadIconContainer>
       </CardContent>
     </StyledCard>

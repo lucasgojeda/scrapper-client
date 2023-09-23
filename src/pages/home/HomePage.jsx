@@ -149,8 +149,8 @@ export const HomePage = () => {
           {reports.map((item) => (
             <CardReport
               key={item._id}
+              id={item._id}
               name={item.name}
-              url={item.url}
               date={item.date}
               productsQuantity={item.productsQuantity}
             />
